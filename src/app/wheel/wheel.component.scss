@@ -1,12 +1,73 @@
 .componentcontainer {
+  margin: 0;
+}
+
+$diameter: 500px;
+$numberOfSlices: 5;
+$radius: ($diameter / 2);
+$circumfrance: (6.283185307 * $radius);
+$sliceHeight: ($circumfrance / $numberOfSlices);
+$sliceOffset: ($sliceHeight / 2);
+$sliceColor: #095B8D;
+$rotation: 360deg / $numberOfSlices;
+
+.wheelcontainer {
   display: flex;
-  flex-direction: column  ;
   justify-content: center;
   align-items: center;
-}
-.wheelcontainer {
   width: 500px;
   height: 500px;
-  border-radius: 50%;
+  border-radius: 100%;
   background-color: gray;
+  position: relative;
+  margin: 2rem auto;
+  &:before {
+		content: '';
+		text-align: center;
+		display: block;
+		line-height: 60px;
+		position: absolute;
+		height: 40px;
+		width: 40px;
+		background: white;
+		box-shadow: 0 0 5px 5px rgba(#000, .1);
+		top: 50%;
+		left: 50%;
+		margin-top: -20px;
+		margin-left: -20px;
+		border-radius: 100%;
+		z-index: 200;
+	}
 }
+.option {
+  transform-origin: left center;
+  background-color: blue;
+  position: absolute;
+  z-index: 150;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  &::before {
+    margin-bottom: -1px;
+    margin-top: -2px;
+
+  }
+  &:nth-child(1) { transform: rotate($rotation);};
+  &:nth-child(2) { transform: rotate($rotation * 2);}
+  &:nth-child(3) { transform: rotate($rotation * 3);}
+  &:nth-child(4) { transform: rotate($rotation * 4);}
+  &:nth-child(5) { transform: rotate($rotation * 5);}
+}
+/*
+#o1 { transform: rotate($rotation);}
+#o2 { transform: rotate($rotation * 2);}
+
+#o3 { transform: rotate($rotation * 3);}
+#o4 { transform: rotate($rotation * 4);}
+#o5 { transform: rotate($rotation * 5);}
+*/
