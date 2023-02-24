@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./wheel.component.scss']
 })
 export class WheelComponent {
+  data = {} as any;
 
 }

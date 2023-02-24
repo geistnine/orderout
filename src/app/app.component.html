@@ -5,9 +5,10 @@
   <div class="container">
     <p>Id: <span>{{data.id}}</span></p>
     <p class="content">Message: <span>{{data.content}}</span></p>
-    <form>
+    <form #f="ngForm" onsubmit="return false" (ngSubmit)="getRestaurants(f)" novalidate>
       <label for="location">Your Location Here... </label>
-      <input type="text" name="location">
+      <input type="text" name="location" ngModel>
+      <button type="submit">Submit</button>
     </form>
   </div>
 
